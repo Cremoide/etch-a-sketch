@@ -33,8 +33,8 @@ function gridMaker(rowItemNumber) {
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
 
-    const cellWidth = Math.floor(containerWidth / rowItemNumber)
-    const cellHeight = Math.floor(containerHeight / rowItemNumber)
+    const cellWidth = containerWidth / rowItemNumber
+    const cellHeight = containerHeight / rowItemNumber
 
     // Tile generation
     for (let i = 0; i < rowItemNumber * rowItemNumber; i++) {
