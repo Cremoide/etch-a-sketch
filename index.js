@@ -1,54 +1,62 @@
-// 16x16 grid of square divs
-function gridMaker(rowItemNumber) {
-    const container = document.querySelector("#container");
-    container.innerHTML = "";
+// Popup button for the new grid
+const btn = document.querySelector("#btn");
 
-    // 25px box + 1px border
-    container.style.width = `${rowItemNumber * 26}px`;
-    container.style.display = "flex";
-    container.style.flexWrap = "wrap";
+btn.addEventListener("click", (e) => {
+    let userInput = prompt("How big you want your grid?", "1-100");
 
-  for (let i = 0; i < rowItemNumber * rowItemNumber; i++) {
-    const div = document.createElement("div");
-    div.style.cssText = "border: 1px solid black; height: 25px; width: 25px";
-    div.classList.add('cell')
-    container.appendChild(div);
+    e = Number(userInput);
+
+    if (Number.isNaN(e)) {
+        alert("Sadly, I can only take numbers from you.");
+        getInput();
     }
-}
-
-gridMaker(16);
-
-// Hover effect on the tiles when mouse goes over
-const cell = document.querySelectorAll(".cell");
-
-cell.forEach(cell => {
-    cell.addEventListener("mouseenter", () => {
-        console.log("Cell detected!");
-        cell.style.background = "black";
-    });
+    if (userInput <= 0) {
+        alert("C'mon you know you can do better than that!");
+        console.log(e);
+        return e;
+    }
+    if (userInput > 100) {
+        console.log(e);
+        alert("Beep-bop! Toaster can't go over 100x100 grid size.");
+        console.log(e);
+        return e;
+    } else {
+        gridMaker(e);
+    }
 });
 
-// for (let i = 0; i < cell.length; i++) {
-//     cell[i].style.backgroundColor = "black";
-// }
+// Grid of tile divs
+function gridMaker(rowItemNumber) {
+    const container = document.querySelector("#container");
+    container.textContent = "";
 
-// cellNodeList.addEventListener("mouseenter", cellPaint);
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
 
+    const cellWidth = Math.floor(containerWidth / rowItemNumber)
+    const cellHeight = Math.floor(containerHeight / rowItemNumber)
 
-// for (let i = 0; i < cell.length; i++) {
-//     cell[i].style.backgroundColor = "black";
-// }
+    // Tile generation
+    for (let i = 0; i < rowItemNumber * rowItemNumber; i++) {
+    const cell = document.createElement("div");
 
-// cellNodeList.addEventListener("mouseenter", cellPaint);
+    console.log(`Tile Width: ${Math.floor(containerWidth / rowItemNumber)}px`);
+    console.log(`Tile Height: ${Math.floor(containerHeight / rowItemNumber)}px`);
 
-// element.addEventListener("click", function() {
-//     document.getElementById("demo").innerHTML = "Hello World";
-//   });
+    cell.style.cssText = `height: ${cellHeight}; width: ${cellHeight}px`;
+    cell.classList.add('cell')
+    container.appendChild(cell);
+    }
 
-// btn.onclick = () => {
-//     const cellNodeList = document.querySelectorAll(".cell");
+    // Hover effect on the tiles when mouse goes over
+    let cell = document.querySelectorAll(".cell");
 
-//     for (let i = 0; i < cell.length; i++) {
-//         cell[i].style.backgroundColor = "black";
-//     }
-// };
+    cell.forEach((cell) => {
+        cell.addEventListener("mouseenter", () => {
+            console.log("Cell detected!");
+            cell.style.background = "black";
+        });
+    });
+};
+
+gridMaker(16);

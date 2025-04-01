@@ -3,8 +3,25 @@
 }
 
 #container {
+    width: 480px;
+    height: 480px;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: flex-start;
+}
+
+.cell {
+    border: 1px solid gray;
+}
+
+.center {
+    justify-content: center;
+    justify-items: center;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
