@@ -14,7 +14,7 @@ body {
 .header {
     position: fixed;
     right: 0;
-    top: 10px;
+    top: 100px;
     width: 100%;
     text-align: center;
 }
@@ -24,15 +24,21 @@ body {
     height: 480px;
     display: flex;
     flex-wrap: wrap;
+    outline: 2px solid black;
 }
 
 .cell {
     border: 1px solid gray;
 }
 
+#controls {
+    position: relative;
+    top: 5px;
+}
+
 button {
     --bg: #000;
-    --hover-bg: #ff90e8;
+    --hover-bg: #ffffff;
     --hover-text: #000;
     color: #fff;
     cursor: pointer;
