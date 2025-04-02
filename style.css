@@ -6,17 +6,22 @@
 body {
     margin: 0;
     display: flex;
-    height: 100vh;
     align-items: center;
     justify-content: center;
 }
 
 .header {
-    position: fixed;
     right: 0;
-    top: 100px;
     width: 100%;
     text-align: center;
+}
+
+.header, h1 {
+font-size: x-large;
+}
+
+.header, h2 {
+font-size: large;
 }
 
 #container {
